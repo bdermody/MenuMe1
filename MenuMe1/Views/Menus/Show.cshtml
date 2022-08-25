@@ -1,0 +1,81 @@
+﻿@model MenuMe1.Models.Menu
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1 style="text-align: center; color: #d5c9bb" > @Html.DisplayFor(model => model.Name)</h1>
+ <hr style=" height: 4px; color:#000000;margin: 0px"/>
+
+
+
+
+
+
+<div class="container" style=" margin: 40px">
+  <div class="row">
+    <div class="col" >
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+    
+  </div>
+</div>
+
+
+
+<div>
+   
+   
+    <dl class="row">
+
+             @foreach (var ms in Model.MenuSections) {
+                 <dt class = "col-sm-2">
+                    <h3 style="color: #d5c9bb">@ms.Name</h3> 
+                 </dt>
+                 
+
+
+                     @foreach (var mi in ms.MenuItems) {
+                        <div style="background-color: #4d6e7f" class="list-group">
+                          <a class="list-group-item" aria-current="true" style="background-color: #4d6e7f; pointer-events: none; border: none">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h7 style=" color: #000000" class="mb-1"> -@mi.Name</h7>
+                            </div>
+
+                          <p style=" color: #000000" class="mb-1"> @ms.Description.</p>
+                          <small style=" color: #000000" >$@mi.Price</small>
+                          </a>
+ 
+                         </div>
+                                          }
+                                        
+                        
+             }
+                       
+   
+
+       
+       
+    </dl>
+</div>
+
+
+
+
+
+    <div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id"  style=" color: #000000">Edit</a> |
+    <a asp-action="ByRestaurant" asp-route-id="@Model?.Id"  style=" color: #000000">Back to List</a>
+    </div>

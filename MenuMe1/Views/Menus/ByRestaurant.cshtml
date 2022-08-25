@@ -1,0 +1,42 @@
+﻿@model IEnumerable<MenuMe1.Models.Menu>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Mis Menus!</h1>
+
+<p>
+    <a asp-action="Create">Crear</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Restaurant)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Restaurant.Id)
+            </td>
+            <td>
+                <a asp-action="Index" asp-controller="MenuSections" >Ver Secciones del Menu</a> |
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Show" asp-route-id="@item.Id">Show</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
