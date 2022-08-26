@@ -18,29 +18,8 @@ namespace MenuMe1.Controllers
         [Authorize]
         public IActionResult Index()
         {
-           
-            return View();
-            //"Areas/Identity/Pages/Account/Login.cshtml"
+            return View(); 
         }
-
-        public IActionResult ForgotPassword()
-        {
-
-            return View("Areas/Identity/Pages/Account/ForgotPassword.cshtml");
-           
-        }
-
-        public IActionResult Register()
-        {
-
-            return View("Areas/Identity/Pages/Account/Register.cshtml");
-            
-        }
-
-
-
-
-
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
