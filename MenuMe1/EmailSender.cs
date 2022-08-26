@@ -1,22 +1,23 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity.UI.Services;
+using System;
 using System.Net;
 using System.Net.Mail;
 using System.Threading.Tasks;
 
 namespace MenuMe1
 {
-    public class EmailSender
+    public class EmailSender : IEmailSender
     {
-        public void SendEmail()
+        public async Task SendEmailAsync(string email, string subject, string htmlMessage)
         {
             string fromMail = "bdermody9816@gmail.com";
             string fromPassword = "vouucviyyifuycaj";
 
             MailMessage message = new MailMessage();
             message.From = new MailAddress(fromMail);
-            message.Subject = "Bienvenido a Menu Me!";
-            message.To.Add(new MailAddress("bdermodycas@gmail.com"));
-            message.Body = "<html><body> Succes </body></html>";
+            message.Subject = subject;
+            message.To.Add(new MailAddress(email));
+            message.Body = "<html><body> " + htmlMessage + " </body></html>";
             message.IsBodyHtml = true;
 
             var smtpClient = new SmtpClient("smtp.gmail.com")
@@ -25,6 +26,7 @@ namespace MenuMe1
                 Credentials = new NetworkCredential(fromMail, fromPassword),
                 EnableSsl = true,
             };
+
 
             smtpClient.Send(message);
         }

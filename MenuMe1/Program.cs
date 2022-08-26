@@ -3,6 +3,7 @@ using MenuMe1.Data;
 using MenuMe1.Models;
 using MenuMe1.Repositories;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 
 EmailSender e = new EmailSender();
@@ -22,6 +23,7 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 builder.Services.AddControllers();
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IRepository<Orden>, OrdenRepository>();
+builder.Services.AddTransient<IEmailSender, EmailSender>();
 
 
 var app = builder.Build();
