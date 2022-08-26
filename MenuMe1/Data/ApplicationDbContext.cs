@@ -28,8 +28,6 @@ namespace MenuMe1.Data
             modelBuilder.Entity<MenuItem>().ToTable("MenuItem");
             modelBuilder.Entity<MenuSection>().ToTable("MenuSection");
             modelBuilder.Entity<Orden>().ToTable("Orden");
-
-
         }
     }
 }

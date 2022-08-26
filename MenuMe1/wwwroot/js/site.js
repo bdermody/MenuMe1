@@ -1,10 +1,46 @@
-﻿function menuItemCreate() {
+﻿function showOrders() {
+    $.ajax({
+        
+        contentType: "application/json",
+        url: "https://localhost:7144/api/ordenes/getall",
+        dataType: "json",
+        success: function (data) {
+            $.each(data, function (key, value) {
+                $('#orderstable').append("<tr>\
+										<td>"+ value.menuuItem + "</td>\
+										<td>"+ value.mesa + "</td>\
+										</tr>");
+            })
+        }
 
-    const div = document.createElement('div');
-    div.setAttribute('class', 'list-group');
+    })
+        .done(function (data) {
+            console.log(data)
+            $("#orderstable").show()
 
-    const a = document.createElement('a');
-    div.setAttribute('class', 'list-group-item list-group-item-action active');
+        });
+
+
+}
+
+
+function createOrder(tableId, miId) {
+
+    $.ajax({
+        contentType: "application/json",
+        method: "POST",
+        url: "https://localhost:7144/api/ordenes/create",
+        data: JSON.stringify({
+            "mesa": tableId,
+            "menuitemid": miId
+            
+        }),
+        dataType: "text",
+
+    })
+        
+
+
 
 
 }

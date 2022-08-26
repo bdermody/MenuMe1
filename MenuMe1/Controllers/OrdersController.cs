@@ -10,18 +10,31 @@ namespace MenuMe1.Controllers
     [Authorize]
     public class OrdersController : ControllerBase
     {
-        public OrdersController(IRepository<Orden> respository)
+        public OrdersController(IRepository<Orden> repository)
         {
-            Respository = respository;
+            Repository = repository;
         }
 
-        readonly IRepository<Orden> Respository;
+        readonly IRepository<Orden> Repository;
 
         [HttpGet]
         [Route("getall")]
         public JsonResult GetAll()
         {
-            return new JsonResult(Respository.GetAll());
+            return new JsonResult(Repository.GetAll());
+        }
+
+
+        [HttpPost]
+        [Route("create")]
+        public JsonResult Create(CreateOrden co)
+        {
+            Orden orden = new Orden(co);
+            Repository.Insert(orden);
+            Repository.Save();
+
+            return new JsonResult(Repository.Get(orden.Id));
+
         }
     }
 }

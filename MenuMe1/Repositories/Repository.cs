@@ -13,9 +13,9 @@ namespace MenuMe1.Repositories
         }
 
         readonly ApplicationDbContext Context;
-        readonly DbSet<TEntity> Set;
+        protected readonly DbSet<TEntity> Set;
 
-        public IEnumerable<TEntity> GetAll()
+        public virtual IEnumerable<TEntity> GetAll()
         {
             return Set.ToList();
         }

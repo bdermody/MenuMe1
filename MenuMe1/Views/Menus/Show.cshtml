@@ -5,77 +5,64 @@
 }
 
 <h1 style="text-align: center; color: #d5c9bb" > @Html.DisplayFor(model => model.Name)</h1>
- <hr style=" height: 4px; color:#000000;margin: 0px"/>
-
-
-
-
+<hr style=" height: 4px; color:#000000;margin: 0px"/>
 
 
 <div class="container" style=" margin: 40px">
   <div class="row">
     <div class="col" >
-
-
-
-
-
-
-
-
-
-
-
-
-
     </div>
     
   </div>
 </div>
 
 
-
 <div>
    
    
-    <dl class="row">
+    <dl class="row"  style="margin-top:-100px;">
 
              @foreach (var ms in Model.MenuSections) {
-                 <dt class = "col-sm-2">
+                 <dt class = "col-sm-2" style="margin-top:70px;">
                     <h3 style="color: #d5c9bb">@ms.Name</h3> 
                  </dt>
                  
-
-
                      @foreach (var mi in ms.MenuItems) {
                         <div style="background-color: #4d6e7f" class="list-group">
                           <a class="list-group-item" aria-current="true" style="background-color: #4d6e7f; pointer-events: none; border: none">
-                            <div class="d-flex w-100 justify-content-between">
+                            
+                              <div class="d-flex w-100 justify-content-between">
                                 <h7 style=" color: #000000" class="mb-1"> -@mi.Name</h7>
                             </div>
 
                           <p style=" color: #000000" class="mb-1"> @ms.Description.</p>
                           <small style=" color: #000000" >$@mi.Price</small>
                           </a>
+                          <button data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="createOrder(1, @mi.Id)" style="width: 100px; padding: 0px; border: none; padding:0px; color:#D5C9BB; background-color:#333d45">Ordenar</button>
  
                          </div>
                                           }
-                                        
-                        
              }
-                       
-   
-
-       
-       
     </dl>
 </div>
-
-
-
-
 
     <div>
     <a asp-action="Edit" asp-route-id="@Model?.Id"  style=" color: #000000">Edit</a> |
     <a asp-action="ByRestaurant" asp-route-id="@Model?.Id"  style=" color: #000000">Back to List</a>
     </div>
+
+                          <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Se ordeno el item de manera exitosa!</h5>
+      </div>
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
