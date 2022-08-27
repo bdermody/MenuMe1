@@ -97,12 +97,11 @@ namespace MenuMe1.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Address,Phone,Website,Motto")] Restaurant restaurant)
+        public async Task<IActionResult> Edit(int id, CreateRestaurant cr)
         {
-            if (id != restaurant.Id)
-            {
-                return NotFound();
-            }
+            Restaurant restaurant = new Restaurant(cr);
+            restaurant.Id = id;
+            
 
             if (ModelState.IsValid)
             {

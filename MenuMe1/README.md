@@ -1,27 +1,28 @@
-﻿# To Do
+﻿# Por hacer
 
-1. Fix register
+1.arreglar registro
 2. add to Github
-2. Fix email
-3. Fix create and edit of everything
+2. smpt email
+3. arreglar todos los create
 2. Add missing links
 3. Remember selected restaurant when viewing menus
-4. Show menu sections by menu
-5. Show menu items by menu section
-6. Improve editing experience
-7. Associate restaurants with user
+4. mostar secciones x menu
+5. mostrar items y secciones
+6. Mejorar experiencia al crear y editar
+7. Asociar restaurantes con usuario
 
-# Features for demo
+# Demo
 
 1. ASP.NET Core, Repository, Migrations, 
-1. Register
-1. Login - remember login
-1. Add restaurant
-1. Add menu
-1. Add menu sections
-1. Add Menu items
-1. Show Menu
-1. Web Api - create order
+1. Registro
+1. Login -
+1. Agregar restaurant
+1. Agregar menu
+1. Agregar menu sections
+1. Agregar Menu items
+1. Mostrar Menu
+1. Web Api - crear orden
 1. jQuery + Network Tab
 1. Hosting
 1. GitHub
+1. Autenticacion y Autorizacion!

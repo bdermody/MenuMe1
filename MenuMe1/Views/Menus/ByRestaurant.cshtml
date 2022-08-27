@@ -23,18 +23,18 @@
     </thead>
     <tbody>
 @foreach (var item in Model) {
-        <tr>
+        <tr style="border: none; border-style:hidden">
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Restaurant.Id)
+                @Html.DisplayFor(modelItem => item.Restaurant.Name) 
             </td>
             <td>
-                <a asp-action="Index" asp-controller="MenuSections" >Ver Secciones del Menu</a> |
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Show" asp-route-id="@item.Id">Show</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="ByMenu"  asp-route-id="@item.Id" asp-controller="MenuSections" >Ver Secciones del Menu</a> |
+                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                <a asp-action="Show" asp-route-id="@item.Id">Mostrar</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Borrar</a>
             </td>
         </tr>
 }

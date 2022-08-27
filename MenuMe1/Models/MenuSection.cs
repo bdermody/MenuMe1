@@ -7,6 +7,19 @@ namespace MenuMe1.Models
 {
     public class MenuSection
     {
+
+        public MenuSection()
+        {
+
+        }
+
+        public MenuSection(CreateMenuSection cms)
+        {
+            Name = cms.Name;
+            MenuId = cms.MenuId;
+            Description = cms.Description;
+         
+        }
         [Key]
         public int Id { get; set; }
 

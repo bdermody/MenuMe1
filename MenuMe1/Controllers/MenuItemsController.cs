@@ -56,15 +56,16 @@ namespace MenuMe1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Description,Price,Position")] MenuItem menuItem)
+        public async Task<IActionResult> Create(CreateMenuItem cmi)
         {
+            MenuItem mi = new MenuItem(cmi);
             if (ModelState.IsValid)
             {
-                _context.Add(menuItem);
+                _context.Add(mi);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(menuItem);
+            return View(mi);
         }
 
         // GET: MenuItems/Edit/5
@@ -88,12 +89,10 @@ namespace MenuMe1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description,Price,Position")] MenuItem menuItem)
+        public async Task<IActionResult> Edit(int id, CreateMenuItem cmi)
         {
-            if (id != menuItem.Id)
-            {
-                return NotFound();
-            }
+            MenuItem menuItem = new MenuItem(cmi);
+            menuItem.Id = id;
 
             if (ModelState.IsValid)
             {
@@ -158,6 +157,13 @@ namespace MenuMe1.Controllers
         private bool MenuItemExists(int id)
         {
           return (_context.MenuItems?.Any(e => e.Id == id)).GetValueOrDefault();
+        }
+
+        public async Task<IActionResult> BySection(int id)
+        {
+
+            var menuitems = _context.MenuItems.Where(m => m.MenuSectionId == id).OrderBy(m => m.Position); 
+            return View(await menuitems.ToListAsync());
         }
     }
 }

@@ -13,22 +13,22 @@
             <hr />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
+                <label asp-for="Name" class="control-label">Nombre</label>
+                <input asp-for="Name" class="form-control" style=" background-color: #4d6e7f; border: none" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
+                <label asp-for="Description" class="control-label">Descripcion</label>
+                <input asp-for="Description" class="form-control" style=" background-color: #4d6e7f; border: none" />
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="MenuId" class="control-label"></label>
+                <label asp-for="MenuId" class="control-label">Menu</label>
                 <select asp-for="MenuId" class ="form-control" asp-items="ViewBag.MenuId"></select>
             </div>
             <div class="form-group">
-                <label asp-for="Position" class="control-label"></label>
-                <input asp-for="Position" class="form-control" />
+                <label asp-for="Position" class="control-label">Posicion</label>
+                <input asp-for="Position" class="form-control" style=" background-color: #4d6e7f; border: none"/>
                 <span asp-validation-for="Position" class="text-danger"></span>
             </div>
             <div class="form-group">

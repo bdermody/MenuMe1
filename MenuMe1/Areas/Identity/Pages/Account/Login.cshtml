@@ -11,36 +11,27 @@
         <section>
             <form id="account" method="post">
                 <h1 style="font-family: source-sans-pro, sans-serif; font-weight: 900">Inicio de Sesion</h1>
-                <hr />
+                <hr style="color: #d5c9bb" />
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-floating" >
                     <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" style=" background-color: #4d6e7f; border: none" />
-                    <label asp-for="Input.Email" class="form-label"></label>
+                    <label asp-for="Input.Email" class="form-label">Correo</label>
                     <span asp-validation-for="Input.Email" class="text-danger"></span>
                 </div>
                 <div class="form-floating" >   
                     <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" style=" background-color: #4d6e7f; border: none"  />
-                    <label asp-for="Input.Password" class="form-label"></label>
+                    <label asp-for="Input.Password" class="form-label">Contraseña</label>
                     <span asp-validation-for="Input.Password" class="text-danger"></span>
                 </div>
                 <div>
-                    <div class="checkbox">
-                        <label asp-for="Input.RememberMe" class="form-label">
-                            <input class="form-check-input" asp-for="Input.RememberMe" />
-                            @Html.DisplayNameFor(m => m.Input.RememberMe)
-                        </label>
-                    </div>
+                   
                 </div>
                 <div class="btn-group mr-2" role="group" aria-label="First group" style="font-family: source-sans-pro, sans-serif; font-weight: 900">
                    <button id="login-submit" type="submit" class="w-100 btn btn-lg " style="background-color: #333d45; color: #d5c9bb; margin-right: 30px">Ingresar</button>
-                   <button  style="background-color: #333d45; color: #d5c9bb; margin-right: 30px; border: none;" class="btn btn-primary"  onclick="location.href='./Register?returnURL=@Model.ReturnUrl' "  >Registrar un nuevo usuario</button>
-                 <button  style="background-color: #333d45; color: #d5c9bb; margin-right: 30px; border: none;" class="btn btn-primary"  onclick="location.href='./ForgotPassword?returnURL=@Model.ReturnUrl' "  >Olvido su contrasena?</button>
+                   <button  style="background-color: #333d45; color: #d5c9bb; margin-right: 30px; border: none" class="btn btn-primary"  onclick="location.href='./Register?returnURL=@Model.ReturnUrl' "  >Registrarse</button>
+                 <button  style="background-color: #333d45; color: #d5c9bb; margin-right: 30px; border: none" class="btn btn-primary"  onclick="location.href='./ForgotPassword?returnURL=@Model.ReturnUrl' "  >Olvido su contrasena?</button>
                 </div>
-                <div>
-                    <p>
-                        <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
-                    </p>
-                </div>
+                
             </form>
         </section>
     </div>

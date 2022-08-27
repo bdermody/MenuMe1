@@ -1,13 +1,13 @@
-﻿@model IEnumerable<MenuMe1.Models.MenuItem>
+﻿@model IEnumerable<MenuMe1.Models.MenuSection>
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Secciones del Menu </h1>
 
 <p>
-    <a asp-action="Create">Crear</a>
+    <a asp-action="Create">Create New</a>
 </p>
 <table class="table">
     <thead>
@@ -19,7 +19,7 @@
                 @Html.DisplayNameFor(model => model.Description)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Price)
+                @Html.DisplayNameFor(model => model.Menu)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Position)
@@ -29,7 +29,7 @@
     </thead>
     <tbody>
 @foreach (var item in Model) {
-        <tr style="border: none; border-style:hidden">
+        <tr  style="border: none; border-style:hidden">
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
@@ -37,15 +37,16 @@
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
-                $@Html.DisplayFor(modelItem => item.Price)
+                @Html.DisplayFor(modelItem => item.Menu.Name)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Position)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                  <a asp-action="BySection"  asp-route-id="@item.Id" asp-controller="MenuItems" >Ver Items</a> |
+                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Detalles</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Borrar</a>
             </td>
         </tr>
 }

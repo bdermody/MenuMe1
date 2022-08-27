@@ -58,16 +58,17 @@ namespace MenuMe1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,RestaurantId")] Menu menu)
+        public async Task<IActionResult> Create(CreateMenu cm)
         {
+           Menu createmenu = new Menu(cm);
             if (ModelState.IsValid)
             {
-                _context.Add(menu);
+                _context.Add(createmenu);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["RestaurantId"] = new SelectList(_context.Restaurants, "Id", "Id", menu.RestaurantId);
-            return View(menu);
+            ViewData["RestaurantId"] = new SelectList(_context.Restaurants, "Id", "Id", createmenu.RestaurantId);
+            return View(createmenu);
         }
 
         // GET: Menus/Edit/5
@@ -92,12 +93,10 @@ namespace MenuMe1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,RestaurantId")] Menu menu)
+        public async Task<IActionResult> Edit(int id, CreateMenu cm)
         {
-            if (id != menu.Id)
-            {
-                return NotFound();
-            }
+            Menu menu = new Menu(cm);
+            menu.Id = id;
 
             if (ModelState.IsValid)
             {
@@ -190,7 +189,7 @@ namespace MenuMe1.Controllers
         public async Task<IActionResult> ByRestaurant(int id)
         {
 
-            var menus = _context.Menus.Where(m => m.RestaurantId == id);//.Include(m => m.Restaurant).FirstOrDefaultAsync(m => m.Id == id); 
+            var menus = _context.Menus.Include(m => m.Restaurant).Where(m => m.RestaurantId == id); 
             return View(await menus.ToListAsync());
         }
 

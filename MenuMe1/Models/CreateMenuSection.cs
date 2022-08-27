@@ -12,8 +12,10 @@ namespace MenuMe1.Models
        
         public int MenuId { get; set; }
 
+        public string Description { get; set; }
 
 
-        
+
+
     }
 }

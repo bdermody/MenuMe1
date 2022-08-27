@@ -57,16 +57,17 @@ namespace MenuMe1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Description,MenuId,Position")] MenuSection menuSection)
+        public async Task<IActionResult> Create(CreateMenuSection cms)
         {
+            MenuSection ms = new MenuSection(cms);
             if (ModelState.IsValid)
             {
-                _context.Add(menuSection);
+                _context.Add(ms);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["MenuId"] = new SelectList(_context.Menus, "Id", "Id", menuSection.MenuId);
-            return View(menuSection);
+            ViewData["MenuId"] = new SelectList(_context.Menus, "Id", "Id", ms.MenuId);
+            return View(ms);
         }
 
         // GET: MenuSections/Edit/5
@@ -91,12 +92,10 @@ namespace MenuMe1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description,MenuId,Position")] MenuSection menuSection)
+        public async Task<IActionResult> Edit(int id, CreateMenuSection cms)
         {
-            if (id != menuSection.Id)
-            {
-                return NotFound();
-            }
+            MenuSection menuSection = new MenuSection(cms);
+            menuSection.Id = id;
 
             if (ModelState.IsValid)
             {
@@ -163,6 +162,13 @@ namespace MenuMe1.Controllers
         private bool MenuSectionExists(int id)
         {
           return (_context.MenuSections?.Any(e => e.Id == id)).GetValueOrDefault();
+        }
+
+        public async Task<IActionResult> ByMenu(int id)
+        {
+
+            var menusections = _context.MenuSections.Include(m => m.Menu).Where(m => m.MenuId == id).OrderBy(m=> m.Position); 
+            return View(await menusections.ToListAsync());
         }
     }
 }

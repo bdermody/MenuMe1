@@ -7,6 +7,18 @@ namespace MenuMe1.Models
 {
     public class Menu
     {
+        public Menu()
+        {
+
+        }
+
+        public Menu(CreateMenu cr)
+        {
+            Name = cr.Name;
+            RestaurantId = cr.RestaurantId;
+        }
+           
+
         [Key]
         public int Id { get; set; }
 

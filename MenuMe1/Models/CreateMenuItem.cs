@@ -14,6 +14,8 @@ namespace MenuMe1.Models
 
         public int Position { get; set; }
 
+        public int MenuSectionId { get; set; }
+
 
 
     }

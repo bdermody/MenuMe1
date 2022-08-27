@@ -13,39 +13,39 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
+                <label asp-for="Name" class="control-label">Nombre</label>
+                <input asp-for="Name" class="form-control" style=" background-color: #4d6e7f; border: none" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Address" class="control-label"></label>
-                <input asp-for="Address" class="form-control" />
+                <label asp-for="Address" class="control-label">Direccion</label>
+                <input asp-for="Address" class="form-control" style=" background-color: #4d6e7f; border: none" />
                 <span asp-validation-for="Address" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Phone" class="control-label"></label>
-                <input asp-for="Phone" class="form-control" />
+                <label asp-for="Phone" class="control-label">Telefono</label>
+                <input asp-for="Phone" class="form-control" style=" background-color: #4d6e7f; border: none" />
                 <span asp-validation-for="Phone" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Website" class="control-label"></label>
-                <input asp-for="Website" class="form-control" />
+                <label asp-for="Website" class="control-label">Web</label>
+                <input asp-for="Website" class="form-control" style=" background-color: #4d6e7f; border: none" />
                 <span asp-validation-for="Website" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Motto" class="control-label"></label>
-                <input asp-for="Motto" class="form-control" />
+                <label asp-for="Motto" class="control-label">Motto</label>
+                <input asp-for="Motto" class="form-control" style=" background-color: #4d6e7f; border: none" />
                 <span asp-validation-for="Motto" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Create" class="btn btn-primary"   />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Atras</a>
 </div>
 
 @section Scripts {
